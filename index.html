@@ -559,31 +559,14 @@ async function generate() {
 
   try {
     const payload = {
-  prompt: `
-CGPA: ${getCGPA()}
-Branch: ${v('branch')}
-College Tier: ${v('college-tier')}
-Year: ${v('year')}
-Goal: ${v('goal')}
-Extras: ${getExtras().join(', ') || 'None'}
-Honesty Level: ${getHonesty()}
-
-Give brutally honest career analysis for Indian job market.
-
-Return JSON format:
-{
-  "verdict": "",
-  "verdictColor": "red|orange|yellow|green",
-  "overallScore": number,
-  "opportunityScores": [{ "name": "", "score": number, "note": "" }],
-  "openDoors": [],
-  "closedDoors": [],
-  "brutalTruth": "",
-  "actionPlan": [],
-  "famousExamples": [{ "name": "", "story": "" }]
-}
-`
-};
+      cgpa:    getCGPA(),
+      branch:  v('branch'),
+      tier:    v('college-tier'),
+      year:    v('year'),
+      goal:    v('goal'),
+      extras:  getExtras(),
+      honesty: getHonesty()
+    };
 
     const res = await fetch('/api/cgpa', {
       method: 'POST',
