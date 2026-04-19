@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CGPA.exe | Reality Check | by Anurag Rajput</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' rx='20' fill='%23FF3A3A'/%3E%3Ctext x='10' y='72' font-size='62' font-family='serif' font-weight='bold' fill='white'%3E%25%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="cursor"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="nav-logo"><i class="fa-solid fa-chart-bar"></i></div>
+    <span class="nav-title">CGPA.exe</span>
+  </a>
+  <div class="nav-right">
+    <span class="nav-badge">Reality Check &middot; ANURAG.exe</span>
+    <a class="nav-link" href="https://github.com/instai4" target="_blank"><i class="fa-brands fa-github"></i></a>
+    <a class="nav-link" href="https://instai4.github.io/PORT-FOLIO/" target="_blank"><i class="fa-solid fa-globe"></i></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">
+    <div class="hero-tag-dot"></div>
+    No sugarcoating. No motivation. Just facts.
+  </div>
+  <h1 class="hero-title">
+    <span class="line1">YOUR CGPA</span><br>
+    <span class="line2">VS REALITY</span><br>
+    <span class="line3">IN INDIA</span>
+  </h1>
+  <p class="hero-sub">
+    Enter your CGPA. Get a <span class="bold">brutally honest</span> breakdown of what doors it opens,
+    what doors it closes, and exactly what you need to do about it.
+    No cap. No cope. Just truth.
+  </p>
+  <div class="warning-banner">
+    <div class="wb-title"><i class="fa-solid fa-triangle-exclamation"></i> Disclaimer</div>
+    CGPA is ONE factor. This tool gives you the honest ground reality of the Indian job market —
+    not to discourage you, but so you can <strong>plan smarter</strong>.
+    Marks don't define you. But ignoring their impact won't help either.
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- LEFT: INPUT -->
+  <div class="input-panel">
+
+    <!-- CGPA SLIDER -->
+    <div class="panel">
+      <div class="panel-title"><i class="fa-solid fa-chart-simple"></i> Your CGPA</div>
+      <div class="cgpa-display">
+        <div class="cgpa-number" id="cgpa-display" style="color:var(--yellow)">7.5</div>
+        <div class="cgpa-scale">out of 10.0</div>
+      </div>
+      <input type="range" class="cgpa-slider" id="cgpa-slider" min="4.0" max="10.0" step="0.1" value="7.5" oninput="updateCGPA(this.value)">
+      <div class="cgpa-labels">
+        <span>4.0</span><span>5.0</span><span>6.0</span><span>7.0</span><span>8.0</span><span>9.0</span><span>10.0</span>
+      </div>
+      <div class="cgpa-zones" style="margin-top:1rem">
+        <div class="czone" style="background:#FF3A3A" data-label="Danger"></div>
+        <div class="czone" style="background:#FF7A00" data-label="Average"></div>
+        <div class="czone" style="background:#FFD600" data-label="Good"></div>
+        <div class="czone" style="background:#00E676" data-label="Excellent"></div>
+      </div>
+    </div>
+
+    <!-- PROFILE -->
+    <div class="panel">
+      <div class="panel-title"><i class="fa-solid fa-user-graduate"></i> Your Profile</div>
+      <div class="fg">
+        <div class="flbl"><i class="fa-solid fa-graduation-cap"></i> Branch / Stream</div>
+        <select class="fsel" id="branch">
+          <option value="CSE">Computer Science Engineering (CSE)</option>
+          <option value="IT">Information Technology (IT)</option>
+          <option value="DS" selected>Data Science / AI &amp; ML</option>
+          <option value="ECE">Electronics &amp; Communication (ECE)</option>
+          <option value="ME">Mechanical Engineering</option>
+          <option value="CE">Civil Engineering</option>
+          <option value="EE">Electrical Engineering</option>
+          <option value="MBA">MBA / Management</option>
+          <option value="BCA">BCA / MCA</option>
+          <option value="BSc">B.Sc Computer Science</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="fg">
+        <div class="flbl"><i class="fa-solid fa-building-columns"></i> College Tier</div>
+        <select class="fsel" id="college-tier">
+          <option value="IIT/NIT">IIT / NIT / IIIT (Tier 1)</option>
+          <option value="State">Good State College / NIRF Top 100 (Tier 2)</option>
+          <option value="Private" selected>Private University (Tier 3)</option>
+          <option value="Deemed">Deemed / Local College (Tier 4)</option>
+        </select>
+      </div>
+      <div class="fg">
+        <div class="flbl"><i class="fa-solid fa-calendar"></i> Current Year</div>
+        <select class="fsel" id="year">
+          <option value="1st">1st Year — just started</option>
+          <option value="2nd">2nd Year — mid journey</option>
+          <option value="3rd" selected>3rd Year — panic mode</option>
+          <option value="Final">Final Year — crunch time</option>
+          <option value="Graduated">Already Graduated</option>
+        </select>
+      </div>
+      <div class="fg">
+        <div class="flbl"><i class="fa-solid fa-bullseye"></i> Dream Goal</div>
+        <select class="fsel" id="goal">
+          <option value="product">Product Company (Google, Microsoft, Amazon)</option>
+          <option value="service">Service Company (TCS, Infosys, Wipro)</option>
+          <option value="startup">Startup / Early Stage Company</option>
+          <option value="higher">Higher Studies (M.Tech / MS / MBA)</option>
+          <option value="research">Research / PhD</option>
+          <option value="government">Government Job / PSU</option>
+          <option value="freelance">Freelancing / Own Startup</option>
+          <option value="data" selected>Data Science / ML Engineer</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- EXTRAS -->
+    <div class="panel">
+      <div class="panel-title"><i class="fa-solid fa-shield-halved"></i> What Else Do You Have?</div>
+      <div class="chips" id="extras-chips">
+        <div class="chip" data-e="projects"><i class="fa-solid fa-laptop-code"></i> Personal Projects</div>
+        <div class="chip" data-e="internship"><i class="fa-solid fa-briefcase"></i> Internship</div>
+        <div class="chip" data-e="kaggle"><i class="fa-solid fa-trophy"></i> Kaggle / Competitions</div>
+        <div class="chip" data-e="opensource"><i class="fa-brands fa-github"></i> Open Source</div>
+        <div class="chip" data-e="certifications"><i class="fa-solid fa-certificate"></i> Certifications</div>
+        <div class="chip" data-e="github"><i class="fa-brands fa-github"></i> Active GitHub</div>
+        <div class="chip" data-e="leetcode"><i class="fa-solid fa-code"></i> LeetCode Practice</div>
+        <div class="chip" data-e="communication"><i class="fa-solid fa-comments"></i> Communication</div>
+        <div class="chip" data-e="research"><i class="fa-solid fa-file-lines"></i> Research Paper</div>
+        <div class="chip" data-e="nothing"><i class="fa-solid fa-face-meh"></i> Just the degree tbh</div>
+      </div>
+    </div>
+
+    <!-- HONESTY LEVEL -->
+    <div class="panel">
+      <div class="panel-title"><i class="fa-solid fa-fire"></i> How Honest Should I Be?</div>
+      <div class="honesty-grid" id="honesty-grid">
+        <div class="hlevel" data-h="kind">
+          <span class="hl-icon"><i class="fa-solid fa-face-smile"></i></span>
+          <span>Gentle</span>
+        </div>
+        <div class="hlevel on" data-h="honest">
+          <span class="hl-icon"><i class="fa-solid fa-face-meh"></i></span>
+          <span>Honest</span>
+        </div>
+        <div class="hlevel" data-h="brutal">
+          <span class="hl-icon"><i class="fa-solid fa-skull"></i></span>
+          <span>Brutal</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- THINKING -->
+    <div class="thinking" id="thinking">
+      <div class="thinking-dots"><span></span><span></span><span></span></div>
+      <span id="thinking-txt">Consulting the Indian job market...</span>
+    </div>
+
+    <button class="gen-btn" id="gen-btn" onclick="generate()">
+      <i class="fa-solid fa-eye"></i> Show Me Reality
+    </button>
+  </div>
+
+  <!-- RIGHT: OUTPUT -->
+  <div class="output-panel" id="output-panel">
+    <div class="empty-state">
+      <div class="empty-ico"><i class="fa-solid fa-graduation-cap"></i></div>
+      <h3>ENTER YOUR CGPA</h3>
+      <p>Fill in your details on the left and hit "Show Me Reality" — we'll tell you exactly where you stand in the Indian job market. No filter.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer-bar">
+  <span class="footer-credit">
+    Built by <a href="https://instai4.github.io/PORT-FOLIO/" target="_blank">ANURAG RAJPUT</a>
+    &middot; Data Science Student @ DBUU &middot; Because someone had to say it.
+  </span>
+  <div class="footer-links">
+    <a href="https://github.com/instai4" target="_blank"><i class="fa-brands fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/anurag-singh-43230a380/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+    <a href="https://instai4.github.io/PORT-FOLIO/" target="_blank"><i class="fa-solid fa-globe"></i></a>
+  </div>
+</div>
+
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check"></i><span id="toast-txt">Copied!</span></div>
+
+<script src="script.js"></script>
+</body>
+</html>
